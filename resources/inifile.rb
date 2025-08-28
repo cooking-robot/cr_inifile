@@ -8,10 +8,6 @@ property :path, String, required: true, name_property: true
 unified_mode true
 
 action :edit do
-  # unless ::File.exist?(new_resource.path)
-  #   file = ::File.new(new_resource.path, 'w')
-  #   file.close
-  # end
   document = ::File.exist?(new_resource.path) ? IniParse.parse( ::File.read(new_resource.path) ) : IniParse::Document.new
 
   new_resource.values.each do |key, val|
